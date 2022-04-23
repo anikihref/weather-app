@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './Header.js';
+import Main from './Main.js';
+
+
+export function formatClassname(className, alternateClassName) {
+  return alternateClassName
+    ? `${className} ${alternateClassName}__${className}`
+    : className;
+}
+
+export const WeatherContext = React.createContext();
 
 function App() {
+  const [weatherCards, setWeatherCards] = useState([])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <WeatherContext.Provider value={{weatherCards, setWeatherCards}}>
+        <Header />
+        <Main />
+      </WeatherContext.Provider>
+    </>
   );
 }
 
