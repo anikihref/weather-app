@@ -57,7 +57,7 @@ export default function WeatherItem({ weather }) {
 
           <WeatherCategoryItem
             weatherStatValue={
-              Math.trunc(weather.wind.speed)
+              Math.trunc(weather.wind.speed) + ' km/h'
             }
             weatherStatName="Wind"
             weatherStatIcon={windSvg}
