@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { formatClassname, WeatherContext } from './App.js';
 import Logo from './Logo.js';
-import magnifier from './img/icons/magnifier.svg';
 
 const APIKey = '0a21bb175b3d38f25bd87373e3f22c43';
 
@@ -82,7 +81,7 @@ export default function SearchInput({ classname }) {
           onClick={handleFind}
           className={formatClassname('search-magnifier', classname)}
         >
-          <img src={magnifier} alt="find" />
+          <img src='/img/icons/magnifier.svg' alt="find" />
         </button>
       </form>
     </div>

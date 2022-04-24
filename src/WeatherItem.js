@@ -1,22 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, {  useContext } from 'react';
 import { WeatherContext } from './App.js';
-import chooseConditionImg from './chooseConditionImg.js';
 import formatWindDirection from './formatWindDirection';
 import WeatherCategoryItem from './WeatherCategoryItem.js';
 
 
-import windSvg from './img/icons/wind.svg'
-import closeSvg from './img/icons/close.svg';
-import windDirectionSvg from './img/icons/wind-direction.svg'
-import thermometerSvg from './img/icons/thermometer.svg'
 
 export default function WeatherItem({ weather }) {
-  const [path, setPath] = useState('');
   const { deleteCard } = useContext(WeatherContext);
-
-  useEffect(() => {
-    setPath(chooseConditionImg(weather.icon));
-  }, [weather.icon]);
 
 
   function handleClose() {
@@ -32,13 +22,13 @@ export default function WeatherItem({ weather }) {
               {weather.name} / {weather.country}
             </div>
             <div className='weather-item__weather-img'>
-              <img src={path} alt="weather" />
+              <img src={`/img/conditions/${weather.icon}.png`} alt="weather" />
             </div>
           </div>
           
 
           <button className="weather-item__close-btn" onClick={handleClose}>
-            <img src={closeSvg} alt="close" />
+            <img src={'/img/icons/close.svg'} alt="close" />
           </button>
         </div>
 
@@ -46,13 +36,13 @@ export default function WeatherItem({ weather }) {
           <WeatherCategoryItem
             weatherStatValue={Math.trunc(weather.temp.default) + '°C'}
             weatherStatName="Temperature"
-            weatherStatIcon={thermometerSvg}
+            weatherStatIcon='/img/icons/thermometer.svg'
           />
 
           <WeatherCategoryItem
             weatherStatValue={formatWindDirection(weather.wind.deg)}
             weatherStatName="Wind direction"
-            weatherStatIcon={windDirectionSvg}
+            weatherStatIcon='/img/icons/wind-direction.svg'
           />
 
           <WeatherCategoryItem
@@ -60,7 +50,7 @@ export default function WeatherItem({ weather }) {
               Math.trunc(weather.wind.speed) + ' km/h'
             }
             weatherStatName="Wind"
-            weatherStatIcon={windSvg}
+            weatherStatIcon='/img/icons/wind.svg'
           />
         </div>
       </div>
