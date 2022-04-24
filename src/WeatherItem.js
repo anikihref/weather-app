@@ -16,10 +16,10 @@ export default function WeatherItem({ weather }) {
 
   useEffect(() => {
     setPath(chooseConditionImg(weather.icon));
-  }, []);
+  }, [weather.icon]);
+
 
   function handleClose() {
-    console.log(deleteCard);
     deleteCard(weather.id);
   }
 
@@ -50,9 +50,7 @@ export default function WeatherItem({ weather }) {
           />
 
           <WeatherCategoryItem
-            weatherStatValue={
-              formatWindDirection(weather.wind.deg) 
-            }
+            weatherStatValue={formatWindDirection(weather.wind.deg)}
             weatherStatName="Wind direction"
             weatherStatIcon={windDirectionSvg}
           />
