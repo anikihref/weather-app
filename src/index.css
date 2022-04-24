@@ -24,6 +24,7 @@ body {
 }
 button {
     border: 0;
+    background-color: transparent;
 }
 
 .container {
@@ -101,7 +102,7 @@ button {
 
 .weather-content__item {
     transition: .5s;
-    cursor: pointer;
+    cursor: default;
     box-shadow: 8px 7px 18px -1px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 8px 7px 18px -1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 8px 7px 18px -1px rgba(0, 0, 0, 0.75);
@@ -124,9 +125,12 @@ button {
 }
 
 .weather-item__city {
+    display: flex;
+    align-items: center;
     padding: 15px 15px 0 15px;
     font-size: 2.5rem;
     margin-bottom: 10px;
+    justify-content: space-between;
 }
 
 .weather-item__env {
@@ -211,7 +215,17 @@ button {
     font-size: 1.4rem;
 }
 
+.weather-item__close-btn {
+    cursor: pointer;
+    width: 30px;
+}
+
+.weather-item__close-btn img {
+    min-width: 100%;
+}
+
 /* 
+
 #E9EFC0
 #B4E197
 #83BD75

@@ -1,19 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { WeatherContext } from './App.js';
 import chooseConditionImg from './chooseConditionImg.js';
 import formatWindDirection from './formatWindDirection'
+import closeSvg from './img/icons/close.svg'
 
 export default function WeatherItem({ weather }) {
   const [path, setPath] = useState('');
+  const { deleteCard } = useContext(WeatherContext)
 
   useEffect(() => {
     setPath(chooseConditionImg(weather.icon));
   }, []);
+
+  function handleClose() {
+    console.log(deleteCard);
+    deleteCard(weather.id)
+  } 
 
   return (
     <div className="weather-content__item weather-item">
       <div className="weather-item__main">
         <div className="weather-item__city">
           {weather.name} / {weather.country}
+          <button className='weather-item__close-btn' onClick={handleClose}>
+            <img src={closeSvg} alt='close' />
+          </button>
         </div>
 
         <div className="weather-item__env">
