@@ -1,24 +1,30 @@
 import React, { useContext, useState } from 'react';
 import { formatClassname, WeatherContext } from './App.js';
 import Logo from './Logo.js';
-import magnifier from './img/icons/magnifier.svg'
+import magnifier from './img/icons/magnifier.svg';
 
 const APIKey = '0a21bb175b3d38f25bd87373e3f22c43';
 
 export default function SearchInput({ classname }) {
   const [value, setValue] = useState('');
-  const { setWeatherCards } = useContext(WeatherContext);
+  const { setWeatherCards, weatherCards } = useContext(WeatherContext);
 
   function handleChange(e) {
     setValue(e.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setValue('')
-  }
+  async function handleFind(e) {
+    e.preventDefault();
 
-  async function handleFind() {
+    if (
+      weatherCards.at(-1) &&
+      weatherCards.some((card) => card.value === value)
+    ) {
+      return null;
+    } else {
+      setValue('');
+    }
+
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${APIKey}&units=metric`
     );
@@ -26,7 +32,7 @@ export default function SearchInput({ classname }) {
     response.json().then((data) => {
       switch (data.cod) {
         case 200:
-          console.log(data)
+          console.log(data);
           setWeatherCards((prev) => {
             return [
               ...prev,
@@ -34,6 +40,7 @@ export default function SearchInput({ classname }) {
                 country: data.sys.country,
                 id: Date.now(),
                 name: data.name,
+                value: value,
                 pressure: data.main.pressure,
                 icon: data.weather['0'].icon,
                 temp: {
@@ -51,7 +58,7 @@ export default function SearchInput({ classname }) {
           break;
 
         default:
-          console.log('nothing found')
+          console.log('nothing found');
       }
     });
   }
@@ -60,7 +67,10 @@ export default function SearchInput({ classname }) {
     <div className={formatClassname('search', classname)}>
       <Logo classname={classname} />
 
-      <form onSubmit={handleSubmit} className={formatClassname('input-block', classname)}>
+      <form
+        onSubmit={handleFind}
+        className={formatClassname('input-block', classname)}
+      >
         <input
           className={formatClassname('search-input', classname)}
           placeholder="search"
