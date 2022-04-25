@@ -9,7 +9,7 @@ export default function WeatherCategoryItem({
     <div className='weather-item__category'>
       <h5 className='weather-item__category-title'>{weatherStatName}</h5>
       <div className='weather-item__category-content'>
-        <p className='weather-item__category-value'>{weatherStatValue}</p>
+        <div className='weather-item__category-value'>{weatherStatValue}</div>
         {weatherStatIcon && 
           <div className='weather-item__category-icon'>
             <img src={weatherStatIcon} alt='item'></img>

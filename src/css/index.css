@@ -147,6 +147,17 @@ button {
     margin-bottom: 20px;
 }
 
+.weather-item__date-time {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.weather-item__date-date {
+    font-size: 1.6rem;
+    text-align: right;
+}
+
 .weather-item__main-info {
     display: flex;
     align-items: center;
@@ -250,6 +261,14 @@ button {
 }
 
 @media (max-width: 1024px) {
+    .weather-item__date-time {
+        font-size: 1.2rem;
+    }
+    
+    .weather-item__date-date {
+        font-size: 1.2rem;
+    }
+
     .navbar__search {
         max-width: calc(1260px / 3);
     }

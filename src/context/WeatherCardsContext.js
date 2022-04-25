@@ -11,6 +11,7 @@ function reducer(state, action) {
   switch (action.type) {
     case CARD_ACTIONS.ADD_CARD:
       return [...state, {
+        time: action.data.dt,
         country: action.data.sys.country,
         id: Date.now(),
         name: action.data.name,

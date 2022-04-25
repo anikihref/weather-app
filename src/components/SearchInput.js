@@ -30,6 +30,7 @@ export default function SearchInput({ classname }) {
     );
 
     response.json().then((data) => {
+      console.log(data)
       switch (data.cod) {
         case 200:
           dispatch({ type: CARD_ACTIONS.ADD_CARD, data: {...data, value}})
