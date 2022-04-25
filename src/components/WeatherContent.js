@@ -5,7 +5,6 @@ import { useWeatherCards } from '../hook/useWeatherCards'
 
 export default function WeatherContent() {
   const { weatherCards } = useWeatherCards()
-  
   return (
     <div className="main__weather-content weather-content">
       <Container classname="weather-content">

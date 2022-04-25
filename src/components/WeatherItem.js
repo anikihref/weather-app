@@ -5,8 +5,10 @@ import { useWeatherCards } from '../hook/useWeatherCards'
 
 
 export default function WeatherItem({ weather }) {
-  const { deleteCard } = useWeatherCards();
+  const { dispatch, CARD_ACTIONS } = useWeatherCards();
 
+
+  
   return (
     <div className="weather-content__item weather-item">
       <div className="weather-item__main">
@@ -21,7 +23,7 @@ export default function WeatherItem({ weather }) {
           </div>
           
 
-          <button className="weather-item__close-btn" onClick={() => deleteCard(weather.id)}>
+          <button className="weather-item__close-btn" onClick={() => dispatch({type: CARD_ACTIONS.REMOVE_CARD, data: { id: weather.id }})}>
             <img src={'/img/icons/close.svg'} alt="close" />
           </button>
         </div>
