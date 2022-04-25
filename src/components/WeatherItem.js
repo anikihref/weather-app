@@ -1,17 +1,11 @@
-import React, {  useContext } from 'react';
-import { WeatherContext } from './App.js';
-import formatWindDirection from './formatWindDirection';
+import React from 'react';
+import formatWindDirection from '../format-values/formatWindDirection';
 import WeatherCategoryItem from './WeatherCategoryItem.js';
-
+import { useWeatherCards } from '../hook/useWeatherCards'
 
 
 export default function WeatherItem({ weather }) {
-  const { deleteCard } = useContext(WeatherContext);
-
-
-  function handleClose() {
-    deleteCard(weather.id);
-  }
+  const { deleteCard } = useWeatherCards();
 
   return (
     <div className="weather-content__item weather-item">
@@ -27,7 +21,7 @@ export default function WeatherItem({ weather }) {
           </div>
           
 
-          <button className="weather-item__close-btn" onClick={handleClose}>
+          <button className="weather-item__close-btn" onClick={() => deleteCard(weather.id)}>
             <img src={'/img/icons/close.svg'} alt="close" />
           </button>
         </div>

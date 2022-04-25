@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatClassname } from './App'
+import { formatClassname } from '../App'
 
 export default function Logo({ classname }) {
   return (

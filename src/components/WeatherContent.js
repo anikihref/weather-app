@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { WeatherContext } from './App.js';
-import Container from './Container.js';
+import React from 'react';
+import Container from './Container';
 import WeatherItem from './WeatherItem.js';
+import { useWeatherCards } from '../hook/useWeatherCards'
 
 export default function WeatherContent() {
-  const { weatherCards } = useContext(WeatherContext);
-
+  const { weatherCards } = useWeatherCards()
+  
   return (
     <div className="main__weather-content weather-content">
       <Container classname="weather-content">

@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatClassname } from './App.js'
+import { formatClassname } from '../App.js'
 
 export default function Container({ children, classname }) {
   return (

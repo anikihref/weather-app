@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { formatClassname, WeatherContext } from './App.js';
+import React, { useState } from 'react';
+import { formatClassname } from '../App.js';
 import Logo from './Logo.js';
+import { useWeatherCards } from '../hook/useWeatherCards'
 
 const APIKey = '0a21bb175b3d38f25bd87373e3f22c43';
 
 export default function SearchInput({ classname }) {
   const [value, setValue] = useState('');
-  const { setWeatherCards, weatherCards } = useContext(WeatherContext);
+  const { setWeatherCards, weatherCards } = useWeatherCards();
 
   function handleChange(e) {
     setValue(e.target.value);
@@ -29,6 +30,7 @@ export default function SearchInput({ classname }) {
     );
 
     response.json().then((data) => {
+      console.log(data)
       switch (data.cod) {
         case 200:
           console.log(data);

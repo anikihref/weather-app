@@ -11,7 +11,7 @@ html {
     font-size: 16px;
 }
 .main {
-    flex: 1 1 auto; 
+    flex: 1 1 auto;
 }
 body {
     background-color: #b4e197;
@@ -43,7 +43,7 @@ button {
     max-width: calc(1260px / 2);
     border-radius: 50px;
     background-color: #83bd75;
-    padding: 8px 15px 8px 20px;
+    padding: 8px 8px 8px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,7 +77,7 @@ button {
 }
 
 .navbar__search-input {
-    width: 60%;
+    width: 100%;
     padding: 10px 15px;
     outline: none;
     font-size: 1.2rem;
@@ -229,35 +229,24 @@ button {
     .navbar__search-magnifier {
         width: 15px;
     }
-
 }
 
 @media (max-width: 1250px) {
     .weather-content__container {
         grid-template-columns: 1fr 1fr;
     }
-    
-    
-  
+
     .weather-item__statistics {
         padding: 0 10px;
     }
-    
-   
-    
-   
-    
+
     .weather-item__city {
         font-size: 2rem;
     }
-    
-   
-    
+
     .weather-item__close-btn img {
         min-width: 100%;
     }
-    
-
 }
 
 @media (max-width: 1024px) {
@@ -269,46 +258,35 @@ button {
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
     }
-    
+
     .weather-content__item {
         min-width: 280px;
     }
-    
-  
+
     .weather-item__statistics {
         padding: 0 10px;
     }
-    
-   
 
-    
     .weather-item__city {
         font-size: 1.5rem;
     }
-    
-    
+
     .weather-item__category-value {
         font-size: 1.5rem;
-        
     }
-    
+
     .weather-item__category-title {
         font-size: 1.2rem;
-    
     }
-    
-  
-    
+
     .weather-item__close-btn img {
         min-width: 100%;
     }
-    
-  
+
     .weather-item__category-icon {
-       width: 30px;
-       margin-left: 10px;
+        width: 30px;
+        margin-left: 10px;
     }
-    
 }
 
 @media (max-width: 768px) {
@@ -316,36 +294,31 @@ button {
         grid-template-columns: 1fr;
         grid-gap: 20px;
     }
-  
+
     .weather-item__statistics {
         padding: 0 10px;
     }
-    
-    
+
     .weather-item__city {
         font-size: 1.5rem;
     }
-  
+
     .weather-item__category-value {
         font-size: 1.5rem;
-        
     }
-    
+
     .weather-item__category-title {
         font-size: 1.2rem;
-    
     }
-    
-   
+
     .weather-item__close-btn img {
         min-width: 100%;
     }
-    
-    .weather-item__category-icon {
-       width: 30px;
-       margin-left: 10px;
-    }
 
+    .weather-item__category-icon {
+        width: 30px;
+        margin-left: 10px;
+    }
 }
 
 /* 
