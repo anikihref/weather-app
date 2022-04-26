@@ -1,9 +1,10 @@
 import React from 'react';
-import Header from './page-parts/Header.js';
-import Main from './page-parts/Main.js';
 import WeatherCardsProvider from './context/WeatherCardsContext.js';
-import WeatherContent from './components/WeatherContent.js'
-import Navbar from './components/Navbar.js'
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout.js';
+import WeatherCards from './pages/WeatherCards.js';
+import Region from './pages/Region.js';
+import Notfound from './pages/Notfound.js';
 
 export function formatClassname(className, alternateClassName) {
   return alternateClassName
@@ -13,20 +14,17 @@ export function formatClassname(className, alternateClassName) {
 
 export const WeatherContext = React.createContext();
 
-
-
 function App() {
-
   return (
     <>
       <WeatherCardsProvider>
-        <Header>
-          <Navbar classname='navbar'/>
-        </Header>
-        
-        <Main>
-          <WeatherContent />
-        </Main>
+        <Routes>
+          <Route path='/' element={<Layout/>}>
+            <Route index element={<WeatherCards />} />
+            <Route path='region' element={ <Region /> } />
+            <Route path="*" element={<Notfound />} />
+          </Route>
+        </Routes>
       </WeatherCardsProvider>
     </>
   );

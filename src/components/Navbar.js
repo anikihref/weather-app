@@ -1,13 +1,28 @@
-import React from 'react'
-import Container from './Container.js'
-import SearchInput from './SearchInput.js'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Container from './Container.js';
 
-export default function Navbar({ classname }) {
+
+
+const setActiveClass = ({ isActive }) =>
+  isActive ? 'navbar__active-link navbar__link' : 'navbar__link';
+
+export default function Navbar({ children }) {
   return (
-    <div className={classname}>
-        <Container classname={classname}>
-            <SearchInput classname={classname} />
-        </Container>
+    <div className="navbar">
+      <Container classname="navbar">
+        <nav className="navbar__navigation">
+          <NavLink to="/" className={setActiveClass}>
+            Cards
+          </NavLink>
+          <NavLink to="region" className={setActiveClass}>
+            Region
+          </NavLink>
+          <NavLink to="/hz" className={setActiveClass}>
+            HZ
+          </NavLink>
+        </nav>
+      </Container>
     </div>
-  )
+  );
 }

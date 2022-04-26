@@ -6,7 +6,7 @@ import { useWeatherCards } from '../hook/useWeatherCards'
 
 const APIKey = '0a21bb175b3d38f25bd87373e3f22c43';
 
-export default function SearchInput({ classname }) {
+export default function SearchInput() {
   const [value, setValue] = useState('');
   const { dispatch, weatherCards, CARD_ACTIONS } = useWeatherCards();
 
@@ -43,15 +43,15 @@ export default function SearchInput({ classname }) {
   }
 
   return (
-    <div className={formatClassname('search', classname)}>
-      <Logo classname={classname} />
+    <div className='search'>
+      <Logo classname='navbar' />
 
       <form
         onSubmit={handleFind}
-        className={formatClassname('input-block', classname)}
+        className='input-block'
       >
         <input
-          className={formatClassname('search-input', classname)}
+          className='search-input'
           placeholder="search"
           type="text"
           value={value}
@@ -59,7 +59,7 @@ export default function SearchInput({ classname }) {
         />
         <button
           onClick={handleFind}
-          className={formatClassname('search-magnifier', classname)}
+          className='search-magnifier'
         >
           <img src='/img/icons/magnifier.svg' alt="find" />
         </button>
