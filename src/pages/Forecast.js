@@ -5,8 +5,9 @@ import SearchInput from '../components/SearchInput';
 import { useForecastInputValue } from '../hook/useForecastInputValue';
 import { getLocaleDate } from '../formaters/formatCardDate';
 import Image from '../components/Image';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const weatherAPIKey = '767b47ca2fe917fd952f6faa9aa0820b';
+const weatherAPIKey = '04dd498fa79f3f46cf725cb2f616018a';
 const regionAPIKey = 'FqDgqeVeoUeukbyLa6nE5w3oP1uYwAuP';
 
 const getDailyForecastArray = (data, num = 6) => {
@@ -53,16 +54,20 @@ const getCity = (regionData, weatherData) => {
   return location;
 };
 
-export default function Region() {
+export default function Forecast() {
+  const { region } = useParams() 
   const [regionInputValue, setRegionInputValue] = useForecastInputValue();
   const [regionLocation, setRegionLocation] = useState();
   const [regionWeather, setRegionWeather] = useState();
   const [hourlyForecast, setHourlyForecast] = useState();
   const [dailyForecast, setDailyForecast] = useState();
+  const navigation = useNavigate()
 
   useEffect(() => {
-    if (regionInputValue) {
-      handleFind(regionInputValue);
+    if (region) {
+      handleFind(region);
+    } else if (regionInputValue) {
+      handleFind(regionInputValue)
     }
     // eslint-disable-next-line
   }, [regionInputValue]);
@@ -102,6 +107,7 @@ export default function Region() {
 
   function handleZeroing() {
     setRegionInputValue('')
+    navigation('/forecast', { replace: true })
   }
 
   return (

@@ -1,0 +1,30 @@
+.locations__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 30px;
+}
+
+.locations__modifier {
+  color: #B4E197;
+  margin-left: 20px;
+  font-size: 1.2rem;
+}
+
+.locations__link {
+  display: flex;
+  align-items: center;
+  background-color: var(--darkGreen);
+  padding: 10px;
+}
+
+
+.locations__link-text {
+  color: var(--whiteGreen);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.locations__link:active {
+  color: #B4E197;
+}

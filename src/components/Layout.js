@@ -5,7 +5,7 @@ import Main from '../Main';
 import Navbar from './Navbar';
 import Footer from '../Footer'
 
-export default function Layout({ headerContent }) {
+export default function Layout() {
   return (
     <>
       <Header>

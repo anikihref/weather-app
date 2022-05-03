@@ -4,7 +4,7 @@ import SearchInput from '../components/SearchInput';
 import WeatherItem from '../components/WeatherItem.js';
 import { useWeatherCards } from '../hook/useWeatherCards';
 
-const APIKey = '767b47ca2fe917fd952f6faa9aa0820b'
+const APIKey = '04dd498fa79f3f46cf725cb2f616018a'
 
 export default function WeatherContent() {
   const { weatherCards, dispatch, CARD_ACTIONS } = useWeatherCards();

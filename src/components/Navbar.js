@@ -15,11 +15,11 @@ export default function Navbar() {
           <NavLink to="/" className={setActiveClass}>
             Cards
           </NavLink>
-          <NavLink to="region" className={setActiveClass}>
+          <NavLink to="/forecast" className={setActiveClass}>
             Forecast
           </NavLink>
-          <NavLink to="/hz" className={setActiveClass}>
-            Popular cities
+          <NavLink to="/locations" className={setActiveClass}>
+            Cities
           </NavLink>
         </nav>
       </Container>

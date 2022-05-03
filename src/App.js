@@ -1,11 +1,11 @@
 import React from 'react';
-import WeatherCardsProvider from './context/WeatherCardsContext.js';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout.js';
-import WeatherCards from './pages/WeatherCards.js';
-import Region from './pages/Forecast.js';
-import Notfound from './pages/Notfound.js';
-import GlobalContextProvider from './context/GlobalContext.js';
+import Layout from './components/Layout';
+import WeatherCards from './pages/WeatherCards';
+import Notfound from './pages/Notfound';
+import GlobalContextProvider from './context/GlobalContext';
+import Forecast from './pages/Forecast';
+import Locations from './pages/Locations'
 
 export function formatClassname(className, alternateClassName) {
   return alternateClassName
@@ -22,7 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<WeatherCards />} />
-            <Route path="region" element={<Region />} />
+            <Route path="forecast" element={<Forecast />} />
+            <Route path="forecast/:region" element={<Forecast />} />
+            <Route path="locations" element={<Locations />} />
             <Route path="*" element={<Notfound />} />
           </Route>
         </Routes>
