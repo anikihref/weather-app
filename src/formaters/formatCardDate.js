@@ -17,11 +17,16 @@ function formatMonth(id) {
   return names[id];
 }
 
-export const getLocaleDate = (time) => {
+export const getLocaleDate = (time, type) => {
   const date = new Date(time * 1000);
   let localeDate = date.toLocaleDateString().split('/');
   localeDate.splice(2, 0, formatMonth(date.getMonth()))
   localeDate.shift()
+
+  if (type === 'day-month') {
+    localeDate.pop()
+    return localeDate.join(' ')
+  }
 
   return localeDate.join(' ')
 };

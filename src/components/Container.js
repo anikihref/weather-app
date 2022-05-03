@@ -1,9 +1,8 @@
 import React from 'react'
-import { formatClassname } from '../App.js'
 
-export default function Container({ children, classname }) {
+export default function Container({ children, className }) {
   return (
-    <div className={formatClassname('container', classname)}>
+    <div className={`container ${className ? className : ''}`}>
         {children}
     </div>
   )

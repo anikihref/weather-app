@@ -1,3 +1,5 @@
+@import url('./region.css');
+
 :root {
     --darkGreen: #3C723C;
     --whiteGreen: #E9EFC0;
@@ -376,6 +378,18 @@ a {
     .weather-item__category-icon {
         width: 30px;
         margin-left: 10px;
+    }
+
+    .navbar {
+        height: 100px;
+    }
+
+    .navbar__link {
+        font-size: 1.2rem;
+    }
+
+    .navbar__navigation>:not(:last-child) {
+        margin-right: 30px;
     }
 }
 

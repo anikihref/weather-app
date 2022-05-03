@@ -10,13 +10,13 @@ const setActiveClass = ({ isActive }) =>
 export default function Navbar({ children }) {
   return (
     <div className="navbar">
-      <Container classname="navbar">
+      <Container className='navbar__container'>
         <nav className="navbar__navigation">
           <NavLink to="/" className={setActiveClass}>
             Cards
           </NavLink>
           <NavLink to="region" className={setActiveClass}>
-            Region
+            Region Info
           </NavLink>
           <NavLink to="/hz" className={setActiveClass}>
             HZ

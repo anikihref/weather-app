@@ -1,8 +1,8 @@
 import React from 'react';
-import formatWindDirection from '../format-values/formatWindDirection';
+import formatWindDirection from '../formaters/formatWindDirection';
 import WeatherCategoryItem from './WeatherCategoryItem.js';
 import { useWeatherCards } from '../hook/useWeatherCards';
-import { getLocaleTime, getLocaleDate } from '../format-values/formatCardDate';
+import { getLocaleTime, getLocaleDate } from '../formaters/formatCardDate';
 
 export default function WeatherItem({ weather }) {
   const { dispatch, CARD_ACTIONS } = useWeatherCards();
