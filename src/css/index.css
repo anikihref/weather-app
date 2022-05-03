@@ -6,7 +6,7 @@
 }
 
 
-.root {
+#root {
     display: flex;
     flex-direction: column;
     min-height: 100%;
@@ -43,6 +43,20 @@ a {
 
 .header {
     margin-bottom: 30px;
+}
+
+.footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: var(--darkGreen);
+}
+
+.footer__text {
+    color: var(--whiteGreen);
+    font-size: 3rem;
 }
 
 .container {
@@ -350,6 +364,13 @@ a {
 }
 
 @media (max-width: 768px) {
+    .footer {
+        height: 80px;
+    }
+    .footer__text {
+        font-size: 1.5rem;
+    }
+
     .weather-content__container {
         grid-template-columns: 1fr;
         grid-gap: 20px;
