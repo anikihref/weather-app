@@ -100,11 +100,15 @@ export default function Region() {
     });
   }
 
+  function handleZeroing() {
+    setRegionInputValue('')
+  }
+
   return (
     <div className="region">
       <Container className="region__container">
-        {regionLocation ? null : <SearchInput callback={handleFind} />}
-        {regionLocation && (
+        {regionInputValue ? null : <SearchInput callback={handleFind} />}
+        {(regionInputValue && regionLocation) && (
           <>
             <div className="region__info">
               <div className="region__info-header">
@@ -126,6 +130,10 @@ export default function Region() {
                 />
               </div>
             </div>
+
+            <button onClick={handleZeroing} className='clear-forecast'>
+              <p className='clear-forecast__text'>Clear</p>  
+            </button>
 
             <div className="region__forecasts">
               <div className="region__hourly-forecast region__forecast">
