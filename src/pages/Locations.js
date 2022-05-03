@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Container from '../components/Container';
 import LocationItem from '../components/LocationItem';
 import uniqid from 'uniqid';
 
+
+const cities = ['london', 'new york', 'paris', 'los angeles', 'beijing', 'egypt', 'madrid', 'kyiv', 'dubai', 'miami', 'abu dhabi']
 const weatherAPIKey = '04dd498fa79f3f46cf725cb2f616018a';
 
+function createCityObj(city, userRegion = null) {
+    return {
+      name: city,
+      id: uniqid(),
+      isUserRegion: city === userRegion
+    }
+}
 
 export default function Locations() {
-  const [geolocation, setGeolocation] = useState(null);
-  const [locations, setLocations] = useState([
-    {name: 'London', id: uniqid()}
-  ]);
+  const [locations, setLocations] = useState(null);
 
   useEffect(() => {
-    if (navigator.geolocation && !geolocation) {
+    if (navigator.geolocation && !locations) {
       navigator.geolocation.getCurrentPosition((result) => {
 
         fetch(
@@ -22,24 +27,23 @@ export default function Locations() {
         )
           .then((res) => res.json())
           .then((data) => {
-            setGeolocation(data);
+            setLocations(
+              [data.name, ...cities].map(city => {
+                return createCityObj(city, data.name)
+              })
+            )
           });
       });
+    } else if (!navigator.geolocation && !locations) {
+      setLocations(cities.map(city => createCityObj(city)))
     }
-  }, [geolocation]);
+  }, [locations]);
 
 
   return (
     <div className="locations">
       <Container className={'locations__container'}>
-        {geolocation ? (
-          <Link className="locations__link" to={`/forecast/${geolocation.name}`}>
-            <div className='locations__link-text'>{geolocation.name}</div>
-            <p className="locations__modifier">*your region</p>
-          </Link>
-        ) : null}
-
-        {locations.map((location) => {
+        {locations && locations.map((location) => {
           return (
             <LocationItem key={location.id} location={location} />
           );

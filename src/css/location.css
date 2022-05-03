@@ -28,3 +28,23 @@
 .locations__link:active {
   color: #B4E197;
 }
+
+@media (max-width: 768px) {
+  .locations__container {
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+  }
+
+  .locations__modifier {
+    font-size: 1rem;
+  }
+  
+  
+  .locations__link-text {
+    font-size: 1.2rem;
+  }
+
+  .locations__link {
+    padding: 5px;
+  }
+}
