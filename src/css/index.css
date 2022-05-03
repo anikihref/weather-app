@@ -414,6 +414,12 @@ a {
     }
 }
 
+@media (max-width: 425px) {
+    .navbar__link {
+        font-size: 1rem;
+    }
+}
+
 /* 
 
 #E9EFC0

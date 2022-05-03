@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from '../components/Container';
 import ForecastItem from '../components/ForecastItem';
 import SearchInput from '../components/SearchInput';
-import { useRegionInputValue } from '../hook/useRegionInputValue';
+import { useForecastInputValue } from '../hook/useForecastInputValue';
 import { getLocaleDate } from '../formaters/formatCardDate';
 import Image from '../components/Image';
 
@@ -54,7 +54,7 @@ const getCity = (regionData, weatherData) => {
 };
 
 export default function Region() {
-  const [regionInputValue, setRegionInputValue] = useRegionInputValue();
+  const [regionInputValue, setRegionInputValue] = useForecastInputValue();
   const [regionLocation, setRegionLocation] = useState();
   const [regionWeather, setRegionWeather] = useState();
   const [hourlyForecast, setHourlyForecast] = useState();

@@ -7,7 +7,7 @@ import Container from './Container.js';
 const setActiveClass = ({ isActive }) =>
   isActive ? 'navbar__active-link navbar__link' : 'navbar__link';
 
-export default function Navbar({ children }) {
+export default function Navbar() {
   return (
     <div className="navbar">
       <Container className='navbar__container'>
@@ -16,10 +16,10 @@ export default function Navbar({ children }) {
             Cards
           </NavLink>
           <NavLink to="region" className={setActiveClass}>
-            Region Info
+            Forecast
           </NavLink>
           <NavLink to="/hz" className={setActiveClass}>
-            HZ
+            Popular cities
           </NavLink>
         </nav>
       </Container>

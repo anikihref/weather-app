@@ -3,7 +3,7 @@ import WeatherCardsProvider from './context/WeatherCardsContext.js';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout.js';
 import WeatherCards from './pages/WeatherCards.js';
-import Region from './pages/Region.js';
+import Region from './pages/Forecast.js';
 import Notfound from './pages/Notfound.js';
 import GlobalContextProvider from './context/GlobalContext.js';
 
