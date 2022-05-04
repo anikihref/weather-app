@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 
 export default function Container({ children, className }) {
   return (
@@ -6,4 +8,8 @@ export default function Container({ children, className }) {
         {children}
     </div>
   )
+}
+
+Container.propTypes = {
+  className: PropTypes.string
 }

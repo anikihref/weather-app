@@ -1,6 +1,7 @@
 import React from 'react';
 import ForecastItemCategory from './ForecastCategoryItem';
 import formatWindDirection from '../formaters/formatWindDirection'
+import PropTypes from 'prop-types';
 
 export default function ForecastItem({ forecast }) {
   return (
@@ -53,4 +54,23 @@ export default function ForecastItem({ forecast }) {
       </div>
     </div>
   );
+}
+
+ForecastItem.propTypes = {
+  forecast: PropTypes.shape({
+    wind_deg: PropTypes.number,
+    wind_speed: PropTypes.number,
+    dew_point: PropTypes.number,
+    temp_max: PropTypes.number,
+    temp_min: PropTypes.number,
+    feels_like: PropTypes.number,
+    feels_like_day: PropTypes.number,
+    temp: PropTypes.number,
+    temp_day: PropTypes.number,
+    dateName: PropTypes.string,
+    weather: PropTypes.arrayOf(PropTypes.shape({
+      description: PropTypes.string,
+      icon: PropTypes.string
+    }))
+  })
 }

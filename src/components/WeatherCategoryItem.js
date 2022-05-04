@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function WeatherCategoryItem({
   weatherStatValue,
@@ -17,5 +18,11 @@ export default function WeatherCategoryItem({
       </div>
     </div>
   );
+}
+
+WeatherCategoryItem.propTypes = {
+  weatherStatName: PropTypes.string,
+  weatherStatIcon: PropTypes.string,
+  weatherStatValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element])
 }
 

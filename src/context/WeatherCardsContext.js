@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import uniqid from 'uniqid'
 
 export const WeatherCardsContext = createContext()
 
@@ -13,7 +14,7 @@ function reducer(state, action) {
       return [...state, {
         time: action.data.dt,
         country: action.data.sys.country,
-        id: Date.now(),
+        id: uniqid(),
         name: action.data.name,
         value: action.data.value,
         pressure: action.data.main.pressure,

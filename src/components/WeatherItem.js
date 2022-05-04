@@ -3,6 +3,7 @@ import formatWindDirection from '../formaters/formatWindDirection';
 import WeatherCategoryItem from './WeatherCategoryItem.js';
 import { useWeatherCards } from '../hook/useWeatherCards';
 import { getLocaleTime, getLocaleDate } from '../formaters/formatCardDate';
+import PropTypes from 'prop-types';
 
 export default function WeatherItem({ weather }) {
   const { dispatch, CARD_ACTIONS } = useWeatherCards();
@@ -67,4 +68,21 @@ export default function WeatherItem({ weather }) {
       </div>
     </div>
   );
+}
+
+WeatherItem.propTypes = {
+  weather: PropTypes.shape({
+    wind: PropTypes.shape({
+      speed: PropTypes.number,
+      deg: PropTypes.number
+    }),
+    temp: PropTypes.shape({
+      default: PropTypes.number
+    }),
+    time: PropTypes.number,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    country: PropTypes.string,
+    icon: PropTypes.string
+  })
 }

@@ -53,6 +53,8 @@ const getCity = (regionData, weatherData) => {
   return location;
 };
 
+
+
 export default function Forecast() {
   const { region } = useParams() 
   const [regionInputValue, setRegionInputValue] = useForecastInputValue();

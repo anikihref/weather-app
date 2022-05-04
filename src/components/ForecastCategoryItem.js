@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function ForecastItemCategory({ name, value }) {
   return (
@@ -8,4 +9,9 @@ export default function ForecastItemCategory({ name, value }) {
     </li>
     
   )
+}
+
+ForecastItemCategory.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }

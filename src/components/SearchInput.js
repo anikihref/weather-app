@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Logo from './Logo.js';
-
+import PropTypes from 'prop-types';
 
 export default function SearchInput({ callback }) {
   const [value, setValue] = useState('');
@@ -40,4 +40,9 @@ export default function SearchInput({ callback }) {
       </form>
     </div>
   );
+}
+
+
+SearchInput.propTypes = {
+  callback: PropTypes.func.isRequired
 }
