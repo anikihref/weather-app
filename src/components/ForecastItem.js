@@ -1,5 +1,5 @@
 import React from 'react';
-import ForecastItemCategory from './ForecastItemCategory';
+import ForecastItemCategory from './ForecastCategoryItem';
 import formatWindDirection from '../formaters/formatWindDirection'
 
 export default function ForecastItem({ forecast }) {

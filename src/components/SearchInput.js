@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Logo from './Logo.js';
-import { useWeatherCards } from '../hook/useWeatherCards'
 
 
 export default function SearchInput({ callback }) {
   const [value, setValue] = useState('');
-  const { weatherCards } = useWeatherCards();
 
   function handleChange(e) {
     setValue(e.target.value);
@@ -13,15 +11,7 @@ export default function SearchInput({ callback }) {
 
   async function handleFind(e) {
     e.preventDefault();
-
-    if (
-      weatherCards.some((card) => card.value === value)
-    ) {
-      return null;
-    } else {
-      setValue('');
-    }
-
+    setValue('');
    
     return callback(value)
   }

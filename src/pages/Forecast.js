@@ -4,7 +4,6 @@ import ForecastItem from '../components/ForecastItem';
 import SearchInput from '../components/SearchInput';
 import { useForecastInputValue } from '../hook/useForecastInputValue';
 import { getLocaleDate } from '../formaters/formatCardDate';
-import Image from '../components/Image';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const weatherAPIKey = '04dd498fa79f3f46cf725cb2f616018a';
@@ -129,11 +128,9 @@ export default function Forecast() {
                     Country: {regionLocation.Country.LocalizedName}
                   </li>
                 </ul>
-                <Image
-                  className="region__condition-img"
-                  src={`/img/conditions/${regionWeather.current.weather[0].icon}.png`}
-                  alt="condition"
-                />
+                <div className='region__condition-img'>
+                  <img src={`/img/conditions/${regionWeather.current.weather[0].icon}.png`} alt='condition'/>
+                </div>
               </div>
             </div>
 
