@@ -417,6 +417,7 @@ a {
     }
 }
 
+
 @media (max-width: 425px) {
     .navbar, .footer {
         height: 60px;
@@ -425,6 +426,57 @@ a {
         font-size: 1rem;
     }
 }
+
+.weather-card-item-enter-active {
+    animation: weather-card-fade-in 500ms forwards;
+}
+
+.weather-card-item-enter-done {
+    animation: weather-card-fade-in-done 500ms forwards;
+}
+
+
+.weather-card-item-exit-active {
+    animation: weather-card-fade-out 500ms forwards;
+}
+
+
+
+@keyframes weather-card-fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(80%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(100%) translateY(-3%);
+
+    }
+}
+
+@keyframes weather-card-fade-in-done {
+    0% {
+        transform: translateY(-3%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes weather-card-fade-out {
+    0% {
+        opacity: 1;
+        transform: scale(100%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(80%);
+    }
+}
+
 
 /* 
 

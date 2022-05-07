@@ -19,6 +19,7 @@ function reducer(state, action) {
         value: action.data.value,
         pressure: action.data.main.pressure,
         icon: action.data.weather['0'].icon,
+        usActive: true,
         temp: {
           max: action.data.main.temp_max,
           min: action.data.main.temp_min,
@@ -31,9 +32,16 @@ function reducer(state, action) {
       }]
 
     case CARD_ACTIONS.REMOVE_CARD:
+      
       return state.filter(weather => {
         return weather.id !== action.data.id
       })
+
+      // return state.map(weather => {
+      //   return weather.id !== action.data.id
+      //     ? weather
+      //     : {...weather, isActive: false}
+      // })
 
     default: console.log('nothing')
   }
