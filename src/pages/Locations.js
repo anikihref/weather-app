@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Container from '../components/Container';
-import LocationItem from '../components/LocationItem';
+import LocationItem from '../components/location/LocationItem';
 import uniqid from 'uniqid';
 
 const cities = [

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Container from '../components/Container';
-import ForecastItem from '../components/ForecastItem';
+import ForecastItem from '../components/forecast/ForecastItem';
 import SearchInput from '../components/SearchInput';
 import { useForecastInputValue } from '../hook/useForecastInputValue';
 import { getLocaleDate } from '../formaters/formatCardDate';
