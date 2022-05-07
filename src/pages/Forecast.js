@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from '../components/Container';
 import ForecastItem from '../components/forecast/ForecastItem';
 import SearchInput from '../components/SearchInput';
+import Loader from '../components/Loader.js'
 import { useForecastInputValue } from '../hook/useForecastInputValue';
 import { getLocaleDate } from '../formaters/formatCardDate';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -53,34 +54,35 @@ const getCity = (regionData, weatherData) => {
   return location;
 };
 
-
-
 export default function Forecast() {
-  const { region } = useParams() 
+  const { region } = useParams();
   const [regionInputValue, setRegionInputValue] = useForecastInputValue();
   const [regionLocation, setRegionLocation] = useState();
   const [regionWeather, setRegionWeather] = useState();
   const [hourlyForecast, setHourlyForecast] = useState();
   const [dailyForecast, setDailyForecast] = useState();
-  const navigation = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const navigation = useNavigate();
 
   useEffect(() => {
     if (region) {
       handleFind(region);
     } else if (regionInputValue) {
-      handleFind(regionInputValue)
+      handleFind(regionInputValue);
     }
     // eslint-disable-next-line
   }, [regionInputValue]);
 
   async function handleFind(value) {
+    setLoading(true);
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${weatherAPIKey}&units=metric`
     );
 
     if (!response.ok) {
+      setLoading(false)
       return;
-    }
+    } 
 
     const data = await response.json();
     setRegionInputValue(value);
@@ -103,19 +105,21 @@ export default function Forecast() {
       setHourlyForecast(setRegionWeatherArray(weatherData));
 
       setRegionLocation(getCity(regionData, weatherData));
+      setLoading(false);
     });
   }
 
   function handleZeroing() {
-    setRegionInputValue('')
-    navigation('/forecast', { replace: true })
+    setRegionInputValue('');
+    navigation('/forecast', { replace: true });
   }
 
   return (
     <div className="region">
       <Container className="region__container">
         {regionInputValue ? null : <SearchInput callback={handleFind} />}
-        {(regionInputValue && regionLocation) && (
+        {loading && <Loader className='loader'>loading</Loader> }
+        {regionInputValue && regionLocation && (
           <>
             <div className="region__info">
               <div className="region__info-header">
@@ -130,14 +134,17 @@ export default function Forecast() {
                     Country: {regionLocation.Country.LocalizedName}
                   </li>
                 </ul>
-                <div className='region__condition-img'>
-                  <img src={`/img/conditions/${regionWeather.current.weather[0].icon}.png`} alt='condition'/>
+                <div className="region__condition-img">
+                  <img
+                    src={`/img/conditions/${regionWeather.current.weather[0].icon}.png`}
+                    alt="condition"
+                  />
                 </div>
               </div>
             </div>
 
-            <button onClick={handleZeroing} className='clear-forecast'>
-              <p className='clear-forecast__text'>Clear</p>  
+            <button onClick={handleZeroing} className="clear-forecast">
+              <p className="clear-forecast__text">Clear</p>
             </button>
 
             <div className="region__forecasts">

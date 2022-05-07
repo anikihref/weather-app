@@ -1,5 +1,7 @@
 @import url('./forecast.css');
 @import url('./location.css');
+@import url('./loader.css');
+
 
 :root {
     --darkGreen: #3C723C;
