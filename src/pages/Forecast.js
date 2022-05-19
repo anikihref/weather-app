@@ -4,7 +4,7 @@ import ForecastItem from '../components/forecast/ForecastItem';
 import SearchInput from '../components/SearchInput';
 import Loader from '../components/Loader.js'
 import { useForecastInputValue } from '../hook/useForecastInputValue';
-import { getLocaleDate } from '../formaters/formatCardDate';
+import { getLocaleDate } from '../helpers/formatCardDate';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const weatherAPIKey = '04dd498fa79f3f46cf725cb2f616018a';
@@ -55,7 +55,6 @@ const getCity = (regionData, weatherData) => {
 };
 
 export default function Forecast() {
-  const { region } = useParams();
   const [regionInputValue, setRegionInputValue] = useForecastInputValue();
   const [regionLocation, setRegionLocation] = useState();
   const [regionWeather, setRegionWeather] = useState();
@@ -63,6 +62,7 @@ export default function Forecast() {
   const [dailyForecast, setDailyForecast] = useState();
   const [loading, setLoading] = useState(false);
   const navigation = useNavigate();
+  const { region } = useParams();
 
   useEffect(() => {
     if (region) {
@@ -118,7 +118,9 @@ export default function Forecast() {
     <div className="region">
       <Container className="region__container">
         {regionInputValue ? null : <SearchInput callback={handleFind} />}
+
         {loading && <Loader className='loader'>loading</Loader> }
+
         {regionInputValue && regionLocation && (
           <>
             <div className="region__info">

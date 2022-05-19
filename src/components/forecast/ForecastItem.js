@@ -1,6 +1,6 @@
 import React from 'react';
 import ForecastItemCategory from './ForecastCategoryItem';
-import formatWindDirection from '../../formaters/formatWindDirection'
+import formatWindDirection from '../../helpers/formatWindDirection'
 import PropTypes from 'prop-types';
 
 export default function ForecastItem({ forecast }) {

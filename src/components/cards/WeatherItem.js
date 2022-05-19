@@ -1,8 +1,8 @@
 import React from 'react';
-import formatWindDirection from '../../formaters/formatWindDirection';
 import WeatherCategoryItem from './WeatherCategoryItem.js';
+import formatWindDirection from '../../helpers/formatWindDirection';
+import { getLocaleTime, getLocaleDate } from '../../helpers/formatCardDate';
 import { useWeatherCards } from '../../hook/useWeatherCards';
-import { getLocaleTime, getLocaleDate } from '../../formaters/formatCardDate';
 import PropTypes from 'prop-types';
 
 export default function WeatherItem({ weather }) {
