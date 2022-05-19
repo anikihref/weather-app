@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Container from '../../components/Container';
 import ForecastItem from '../../components/forecast/ForecastItem';
 import SearchInput from '../../components/SearchInput';
-import Loader from '../../components/Loader.js'
-import './forecast.css'
-import { useForecastInputValue } from '../../hook/useForecastInputValue';
+import Loader from '../../components/Loader.js';
+import './forecast.css';
 import { getLocaleDate } from '../../helpers/formatCardDate';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -56,23 +55,26 @@ const getCity = (regionData, weatherData) => {
 };
 
 export default function Forecast() {
-  const [regionInputValue, setRegionInputValue] = useForecastInputValue();
-  const [regionLocation, setRegionLocation] = useState();
-  const [regionWeather, setRegionWeather] = useState();
-  const [hourlyForecast, setHourlyForecast] = useState();
-  const [dailyForecast, setDailyForecast] = useState();
   const [loading, setLoading] = useState(false);
-  const navigation = useNavigate();
   const { region } = useParams();
+  const navigate = useNavigate();
+
+  const regionWeather = JSON.parse(localStorage.getItem('regionWeather'));
+  const dailyForecast = JSON.parse(localStorage.getItem('dailyForecast'));
+  const hourlyForecast = JSON.parse(localStorage.getItem('hourlyForecast'));
+  const regionLocation = JSON.parse(localStorage.getItem('regionLocation'));
+  const regionName = localStorage.getItem('regionName');
 
   useEffect(() => {
+
+
     if (region) {
       handleFind(region);
-    } else if (regionInputValue) {
-      handleFind(regionInputValue);
+    } else if (regionName) {
+      navigate(`/forecast/${regionName}`);
     }
     // eslint-disable-next-line
-  }, [regionInputValue]);
+  }, [regionName]);
 
   async function handleFind(value) {
     setLoading(true);
@@ -81,12 +83,13 @@ export default function Forecast() {
     );
 
     if (!response.ok) {
-      setLoading(false)
+      setLoading(false);
       return;
-    } 
+    }
 
     const data = await response.json();
-    setRegionInputValue(value);
+    navigate(`/forecast/${value}`);
+    localStorage.setItem('regionName', value);
 
     Promise.all([
       // запрос на погоду с прогнозом
@@ -101,28 +104,41 @@ export default function Forecast() {
     ]).then((values) => {
       const [weatherData, regionData] = values;
 
-      setRegionWeather({ ...weatherData, value });
-      setDailyForecast(getDailyForecastArray(weatherData));
-      setHourlyForecast(setRegionWeatherArray(weatherData));
+      [
+        ['regionWeather', { ...weatherData, value }],
+        ['dailyForecast', getDailyForecastArray(weatherData)],
+        ['hourlyForecast', setRegionWeatherArray(weatherData)],
+        ['regionLocation', getCity(regionData, weatherData)],
+      ].forEach(([dataName, data]) => {
+        localStorage.setItem(dataName, JSON.stringify(data));
+      });
 
-      setRegionLocation(getCity(regionData, weatherData));
       setLoading(false);
     });
   }
 
   function handleZeroing() {
-    setRegionInputValue('');
-    navigation('/forecast', { replace: true });
+    [
+      'regionName',
+      'regionLocation',
+      'dailyForecast',
+      'hourlyForecast',
+      'regionLocation',
+    ].forEach((dataName) => {
+      localStorage.removeItem(dataName);
+    });
+
+    navigate('/forecast');
   }
 
   return (
     <div className="region">
       <Container className="region__container">
-        {regionInputValue ? null : <SearchInput callback={handleFind} />}
+        {regionName ? null : <SearchInput callback={handleFind} />}
 
-        {loading && <Loader className='loader'>loading</Loader> }
+        {loading && <Loader className="loader">loading</Loader>}
 
-        {regionInputValue && regionLocation && (
+        {regionName && regionLocation && (
           <>
             <div className="region__info">
               <div className="region__info-header">
