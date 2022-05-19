@@ -1,8 +1,9 @@
 import React from 'react';
-import Container from '../components/Container';
-import SearchInput from '../components/SearchInput';
-import WeatherItem from '../components/cards/WeatherItem.js';
-import { useWeatherCards } from '../hook/useWeatherCards';
+import Container from '../../components/Container';
+import SearchInput from '../../components/SearchInput';
+import WeatherItem from '../../components/cards/WeatherItem.js';
+import './weatherCards.css'
+import { useWeatherCards } from '../../hook/useWeatherCards';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const APIKey = '04dd498fa79f3f46cf725cb2f616018a';

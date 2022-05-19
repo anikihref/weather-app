@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
-import WeatherCards from './pages/WeatherCards';
+import WeatherCards from './pages/weather-cards/WeatherCards';
 import Notfound from './pages/Notfound';
 import GlobalContextProvider from './context/GlobalContext';
-import Forecast from './pages/Forecast';
-import Locations from './pages/Locations'
+import Forecast from './pages/forecast/Forecast';
+import Locations from './pages/location/Locations'
 
 export function formatClassname(className, alternateClassName) {
   return alternateClassName

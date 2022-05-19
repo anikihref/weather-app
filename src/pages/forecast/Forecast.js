@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Container from '../components/Container';
-import ForecastItem from '../components/forecast/ForecastItem';
-import SearchInput from '../components/SearchInput';
-import Loader from '../components/Loader.js'
-import { useForecastInputValue } from '../hook/useForecastInputValue';
-import { getLocaleDate } from '../helpers/formatCardDate';
+import Container from '../../components/Container';
+import ForecastItem from '../../components/forecast/ForecastItem';
+import SearchInput from '../../components/SearchInput';
+import Loader from '../../components/Loader.js'
+import './forecast.css'
+import { useForecastInputValue } from '../../hook/useForecastInputValue';
+import { getLocaleDate } from '../../helpers/formatCardDate';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const weatherAPIKey = '04dd498fa79f3f46cf725cb2f616018a';
